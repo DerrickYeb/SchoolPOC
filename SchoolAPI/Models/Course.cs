@@ -13,7 +13,8 @@ namespace SchoolAPI.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [DisplayName("Course Code")]
-        public Guid Id { get; set; }
+        [Column("CourseId")]
+        public int Id { get; set; }
         [StringLength(50,MinimumLength = 5)]
         public string Title { get; set; }
         

@@ -225,6 +225,10 @@
     <Compile Include="Migrations\202101172012141_newModel.Designer.cs">
       <DependentUpon>202101172012141_newModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101172309223_CorrectedConstraint.cs" />
+    <Compile Include="Migrations\202101172309223_CorrectedConstraint.Designer.cs">
+      <DependentUpon>202101172309223_CorrectedConstraint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AcademicYear.cs" />
     <Compile Include="Models\Course.cs" />
@@ -272,6 +276,7 @@
     <Content Include="Views\Course\Create.cshtml" />
     <Content Include="Views\TimeTable\Index.cshtml" />
     <Content Include="Views\TimeTable\Create.cshtml" />
+    <Content Include="Views\Student\Assign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -331,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101172012141_newModel.resx">
       <DependentUpon>202101172012141_newModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101172309223_CorrectedConstraint.resx">
+      <DependentUpon>202101172309223_CorrectedConstraint.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

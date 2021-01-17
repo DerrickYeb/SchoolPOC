@@ -41,7 +41,7 @@ namespace SchoolAPI.Controllers
             }
         }
         [HttpPut]
-        public HttpResponseMessage UpdateTimeTable(Guid Id, TimeTable TimeTable)
+        public HttpResponseMessage UpdateTimeTable(int Id, TimeTable TimeTable)
         {
             try
             {

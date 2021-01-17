@@ -44,7 +44,7 @@ namespace SchoolAPI.Controllers.api
             }
         }
         [HttpPut]
-        public HttpResponseMessage UpdateStudent(Guid Id, Student student)
+        public HttpResponseMessage UpdateStudent(int Id, Student student)
         {
             try
             {

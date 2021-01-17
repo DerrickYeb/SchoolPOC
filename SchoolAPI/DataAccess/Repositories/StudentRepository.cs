@@ -24,12 +24,12 @@ namespace SchoolAPI.DataAccess.Repositories
             .OrderBy(c => c.FirstName)
             .ToListAsync();
 
-        public async Task<IEnumerable<Student>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)
+        public async Task<IEnumerable<Student>> GetByIdsAsync(IEnumerable<int> ids, bool trackChanges)
         =>
            await FindByCondition(c => ids.Contains(c.Id), trackChanges)
             .ToListAsync();
 
-        public async Task<Student> GetStudentAsync(Guid studentId, bool trackChanges)
+        public async Task<Student> GetStudentAsync(int studentId, bool trackChanges)
        =>
             await FindByCondition(c => c.Id.Equals(studentId), trackChanges)
             .SingleOrDefaultAsync();

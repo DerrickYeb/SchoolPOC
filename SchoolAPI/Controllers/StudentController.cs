@@ -1,4 +1,6 @@
-﻿using SchoolAPI.Models;
+﻿using SchoolAPI.DataAccess;
+using SchoolAPI.Models;
+using SchoolAPI.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,7 @@ namespace SchoolAPI.Controllers
 {
     public class StudentController : Controller
     {
+        ApplicationDbContext context = new ApplicationDbContext();
         IEnumerable<Student> students = null;
         // GET: Student
         public ActionResult Index()
@@ -88,6 +91,30 @@ namespace SchoolAPI.Controllers
             }
             ModelState.AddModelError(string.Empty, "Server error");
             return View(student);
+        }
+        public ActionResult Assign(int? id)
+        {
+            StudentVM studentVM = new StudentVM()
+            {
+                Student = new Student(),
+                CoursesList = context.Courses.Select(i => new SelectListItem
+                {
+                    Text = i.Title,
+                    Value = i.Id.ToString()
+                }),
+               
+            };
+
+            if (id == null)
+            {
+                return View(studentVM);
+            }
+            studentVM.Student = context.Students.Find(id.GetValueOrDefault());
+            if (studentVM.Student == null)
+            {
+                return HttpNotFound();
+            }
+            return View(studentVM);
         }
     }
 }

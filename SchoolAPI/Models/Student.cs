@@ -12,7 +12,7 @@ namespace SchoolAPI.Models
     public class Student
     {
         [Column("StudentId")]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         [DisplayName("First Name")]
         public string FirstName { get; set; }
         [DisplayName("Last Name")]
@@ -26,7 +26,7 @@ namespace SchoolAPI.Models
         public string AcademicYear { get; set; }
         public string Address { get; set; }
         [ForeignKey(nameof(Course))]
-        public Guid CourseID { get; set; }
+        public int CourseId { get; set; }
         public Course Course { get; set; }
     }
 }

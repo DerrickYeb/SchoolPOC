@@ -10,9 +10,9 @@ namespace SchoolAPI.Models
 {
     public class TimeTable
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         [ForeignKey(nameof(Course))]
-        public Guid CourseId { get; set; }
+        public int CourseId { get; set; }
         public Course Course { get; set; }
         public string Time { get; set; }
         public string Day { get; set; }

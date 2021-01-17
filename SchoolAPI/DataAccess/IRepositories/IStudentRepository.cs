@@ -10,9 +10,9 @@ namespace SchoolAPI.DataAccess
     public interface IStudentRepository
     {
         Task<IEnumerable<Student>> GetAllStudentsAsync(bool trackChanges);
-        Task<Student> GetStudentAsync(Guid studentId, bool trackChanges);
+        Task<Student> GetStudentAsync(int studentId, bool trackChanges);
         void CreateStudent(Student student);
-        Task<IEnumerable<Student>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
+        Task<IEnumerable<Student>> GetByIdsAsync(IEnumerable<int> ids, bool trackChanges);
         void DeleteStudent(Student student);
     }
 }

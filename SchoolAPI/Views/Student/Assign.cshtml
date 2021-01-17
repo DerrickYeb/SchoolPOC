@@ -1,0 +1,122 @@
+﻿@model SchoolAPI.Models.ViewModels.StudentVM
+
+@{
+    ViewBag.Title = "Assign";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Assign</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>StudentVM</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @if (Model.Student.Id != 0)
+    {
+        //edit
+
+        <input type="hidden" asp-for="Product.Id" />
+    }
+    <div class="col-12 border-bottom">
+        <h2 class="text-primary">Assign</h2>
+    </div>
+    <div class="col-8 pt-4">
+        <div class="form-group row">
+            <div class="col-4">
+                @Html.LabelFor(model => model.Student.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-8">
+                @Html.EditorFor(m => m.Student.FirstName, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                @Html.LabelFor(model => model.Student.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-8">
+                @Html.EditorFor(m => m.Student.LastName, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                @Html.LabelFor(model => model.Student.Class, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-8">
+                @Html.EditorFor(m => m.Student.Class, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.Class, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                @Html.LabelFor(model => model.Student.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-8">
+                @Html.EditorFor(m => m.Student.Gender, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.Gender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                @Html.LabelFor(model => model.Student.AcademicYear, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-8">
+                @Html.EditorFor(m => m.Student.AcademicYear, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.AcademicYear, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                @Html.LabelFor(model => model.Student.Course.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-8">
+                @Html.EditorFor(m => m.Student.Course.Title, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.Course.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                @Html.LabelFor(model => model.Student.Guidian, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-8">
+                @Html.EditorFor(m => m.Student.Guidian, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.Guidian, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                @Html.LabelFor(model => model.Student.GuideanContact, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-8">
+                @Html.EditorFor(m => m.Student.GuideanContact, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Student.GuideanContact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                Category
+            </div>
+            <div class="col-8">
+                @Html.DropDownListFor(s => s.Student.CourseID, Model.CoursesList, "--Select Course", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CoursesList, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
