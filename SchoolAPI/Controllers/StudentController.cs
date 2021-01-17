@@ -16,15 +16,11 @@ namespace SchoolAPI.Controllers
         public ActionResult Index()
         {
 
-            return View();
-        }
-        public ActionResult GetAll()
-        {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:47484/api");
+                client.BaseAddress = new Uri("https://localhost:44348//api/");
 
-                var responseTask = client.GetAsync("students");
+                var responseTask = client.GetAsync("student");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -41,18 +37,45 @@ namespace SchoolAPI.Controllers
                     ModelState.AddModelError(string.Empty, "Server error. Please check connection");
                 }
             }
-            return Json(new { data = students });
+            return View(students);
+        }
+        [HttpGet]
+        public ActionResult GetAll()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:47484/api/student");
+
+                var responseTask = client.GetAsync("student");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<Student>>();
+                    readTask.Wait();
+
+                    students = readTask.Result;
+                }
+                else
+                {
+                    students = Enumerable.Empty<Student>();
+                    ModelState.AddModelError(string.Empty, "Server error. Please check connection");
+                }
+            }
+            return View(students);
         }
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Student student)
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44348//api");
+                client.BaseAddress = new Uri("https://localhost:44348//api/student");
 
                 var postTask = client.PostAsJsonAsync<Student>("student", student);
                 postTask.Wait();

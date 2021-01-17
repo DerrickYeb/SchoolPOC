@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+          @Styles.Render("~/Content/css")
+          @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,7 +23,8 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Student", "Index", "Student", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Courses", "Index", "Courses", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Courses", "Index", "Course", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("TimeTable", "Index", "TimeTable", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
             </div>
@@ -38,6 +40,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>           
     @RenderSection("scripts", required: false)
 </body>
 </html>

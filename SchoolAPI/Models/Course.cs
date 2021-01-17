@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -9,9 +11,11 @@ namespace SchoolAPI.Models
 {
     public class Course
     {
-        [Column("CourseId")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DisplayName("Course Code")]
         public Guid Id { get; set; }
+        [StringLength(50,MinimumLength = 5)]
         public string Title { get; set; }
-        public string Time { get; set; }
+        
     }
 }

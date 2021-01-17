@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace SchoolAPI.Controllers
 {
-    public class USerController : ApiController
+    public class UserController : ApiController
     {
 
     }

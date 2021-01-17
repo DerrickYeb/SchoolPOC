@@ -7,15 +7,16 @@ $(document).ready(function () {
 const loadDataTable = () => {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/Student/GetAll"
+            
+            "url": "/Student/Index"
         },
         "columns": [
-            { "data": "title", "width": "15%" },
-            { "data": "isbn", "width": "15%" },
-            { "data": "author", "width": "15%" },
-            { "data": "price", "width": "15%" },
-            { "data": "category.name", "width": "15%" },
-            { "data": "description", "width": "15%" },
+            { "data": "firstname", "width": "15%" },
+            { "data": "lastname", "width": "15%" },
+            { "data": "class", "width": "15%" },
+            { "data": "guidean", "width": "15%" },
+            { "data": "guideancontact", "width": "15%" },
+            { "data": "academicyear", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {
@@ -24,7 +25,7 @@ const loadDataTable = () => {
                  <a href="/Student/Upsert/${data}" class="btn btn-success text-white" style="cursor:pointer">
                 <i class="fas fa-edit"></i>
                   </a>
-                <a onclick=Delete("/Studetn/Delete/${data}") class="btn btn-danger text-white">
+                <a onclick=Delete("/Student/Delete/${data}") class="btn btn-danger text-white">
                  <i class="fas fa-trash"></i>
              </a>
 

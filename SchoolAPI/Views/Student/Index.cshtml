@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<SchoolAPI.Models.Student>
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="row">
@@ -13,20 +14,34 @@
 </div>
 <br />
 <div class="p-4 border rounded">
-    <table id="tblData" class="table table-stripped table-bordered" style="width:100%">
+    <table  class="table table-stripped table-bordered" style="width:100%">
         <thead class="thead-dark">
             <tr class="table-info">
-                <th>First Name</th>
-                <th>LastName</th>
-                <th>Address</th>
-                <th>Class</th>
-                <th>Academic Year</th>
+                <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                <th>@Html.DisplayNameFor(model => model.Address)</th>
+                <th>@Html.DisplayNameFor(model => model.Class)</th>
+                <th>@Html.DisplayNameFor(model => model.AcademicYear)</th>
                 <th></th>
             </tr>
         </thead>
+        @*@foreach (var item in Model)
+        {  
+            <tr>
+                <td>@Html.DisplayFor(m => item.FirstName)</td>
+                <td>@Html.DisplayFor(m => item.LastName)</td>
+                <td>@Html.DisplayFor(m => item.Address)</td>
+                <td>@Html.DisplayFor(m => item.Class)</td>
+                <td>@Html.DisplayFor(m => item.AcademicYear)</td>
+
+                <td>@Html.ActionLink("Edit","Edit",new { id = item.Id})</td>
+                <td>@Html.ActionLink("Assign","Assign",new { id = item.Id})</td>
+                <td>@Html.ActionLink("Delete","Delete",new { id = item.Id})</td>
+            </tr>
+        }*@
     </table>
 </div>
 @section Scripts{
-    <script src="~/js/user.js"></script>
+    <script src="~/Scripts/Customjs/student.js"></script>
 }
 
